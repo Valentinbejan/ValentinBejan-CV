@@ -1,4 +1,4 @@
-/* cv-website/tailwind.config.ts */
+// cv-website/tailwind.config.ts
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -63,6 +63,7 @@ const config: Config = {
         'float': 'float 6s ease-in-out infinite',
         'glow': 'glow 2s ease-in-out infinite alternate',
         'slide-up': 'slide-up 0.5s ease-out',
+        'shine': 'shine 2.5s infinite',
       },
       keyframes: {
         gradient: {
@@ -84,6 +85,11 @@ const config: Config = {
         'slide-up': {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        shine: {
+          '0%': { 'box-shadow': '0 0 0 0 rgba(147, 51, 234, 0.4)' },
+          '70%': { 'box-shadow': '0 0 0 10px rgba(147, 51, 234, 0)' },
+          '100%': { 'box-shadow': '0 0 0 0 rgba(147, 51, 234, 0)' },
         },
       },
       borderRadius: {

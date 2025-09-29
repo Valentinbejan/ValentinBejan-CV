@@ -12,7 +12,7 @@ export const translations = {
     hero: {
       greeting: 'Salut, sunt',
       name: 'Valentin Bejan',
-      role: 'Dezvoltator Web & Pasionat AI',
+      role: 'Pasionat AI',
       location: 'Galați, România',
     },
     about: {
@@ -155,7 +155,7 @@ export const translations = {
     hero: {
       greeting: 'Hello, I am',
       name: 'Valentin Bejan',
-      role: 'Web Developer & AI Enthusiast',
+      role: 'AI Enthusiast',
       location: 'Galați, Romania',
     },
     about: {
