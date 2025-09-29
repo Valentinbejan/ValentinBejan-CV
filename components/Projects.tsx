@@ -1,13 +1,40 @@
+// cv-website/components/Projects.tsx
 "use client";
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Linkedin } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 export default function Projects() {
   const t = useTranslations("projects");
   const projects = t.raw("items");
+
+  const getLinkContent = (project: any) => {
+    switch (project.linkType) {
+      case "github":
+        return (
+          <>
+            <Github size={20} />
+            {t("viewGithub")}
+          </>
+        );
+      case "linkedin":
+        return (
+          <>
+            <Linkedin size={20} />
+            {t("viewProject")}
+          </>
+        );
+      default:
+        return (
+          <>
+            <ExternalLink size={20} />
+            {t("viewProject")}
+          </>
+        );
+    }
+  };
 
   return (
     <section id="projects" className="section-padding">
@@ -20,7 +47,7 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project: any, index: number) => (
-            <AnimatedSection key={index} delay={index * 0.1}>
+            <AnimatedSection key={index} delay={index * 0.05}>
               <motion.div
                 whileHover={{ y: -5 }}
                 className="glass rounded-xl p-6 h-full flex flex-col"
@@ -41,17 +68,18 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                <motion.a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
-                  whileHover={{ x: 5 }}
-                >
-                  <Github size={20} />
-                  {t("viewGithub")}
-                  <ExternalLink size={16} />
-                </motion.a>
+                {project.link && (
+                  <motion.a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium mt-auto pt-2"
+                    whileHover={{ x: 5 }}
+                  >
+                    {getLinkContent(project)}
+                    <ExternalLink size={16} className="opacity-70" />
+                  </motion.a>
+                )}
               </motion.div>
             </AnimatedSection>
           ))}

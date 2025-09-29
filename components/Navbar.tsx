@@ -1,3 +1,4 @@
+// cv-website/components/Navbar.tsx
 /* cv-website/components/Navbar.tsx */
 "use client";
 
@@ -28,6 +29,7 @@ export default function Navbar() {
     { href: "#education", label: t("education") },
     { href: "#skills", label: t("skills") },
     { href: "#projects", label: t("projects") },
+    { href: "#hobbies", label: t("hobbies") },
     { href: "#contact", label: t("contact") },
   ];
 
