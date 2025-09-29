@@ -64,11 +64,11 @@ export const translations = {
       categories: {
         programming: {
           title: 'Programare',
-          items: ['React', 'JavaScript', 'Java', 'C#'],
+          items: ['React', 'JavaScript', 'Java', 'C#', 'Python'],
         },
         ai: {
           title: 'Inteligență artificială',
-          items: ['Antrenare modele Stable Diffusion', 'LLMs', 'LangChain'],
+          items: ['Antrenare modele Stable Diffusion', 'Antrenare modele LLM', 'Creare seturi de date AI', 'LangChain'],
         },
         database: {
           title: 'Baze de date',
@@ -287,11 +287,11 @@ export const translations = {
       categories: {
         programming: {
           title: 'Programming',
-          items: ['React', 'JavaScript', 'Java', 'C#'],
+          items: ['React', 'JavaScript', 'Java', 'C#', 'Python'],
         },
         ai: {
           title: 'Artificial Intelligence',
-          items: ['Stable Diffusion model training', 'LLMs', 'LangChain'],
+          items: ['Stable Diffusion model training', 'LLM model training', 'AI dataset creation', 'LangChain'],
         },
         database: {
           title: 'Databases',
