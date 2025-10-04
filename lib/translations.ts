@@ -46,9 +46,16 @@ export const translations = {
         {
           name: 'Universitatea „Dunărea de Jos", Galați',
           degree: 'Facultatea de Automatică, Calculatoare, Inginerie Electrică și Electronică',
-          field: 'Calculatoare și Tehnologia Informației',
-          period: '2021 – prezent',
-          status: 'Student',
+          field: 'Master: Tehnologii Informatice Avansate (TIA)',
+          period: '2025 – prezent',
+          status: 'Masterand',
+        },
+        {
+          name: 'Universitatea „Dunărea de Jos", Galați',
+          degree: 'Facultatea de Automatică, Calculatoare, Inginerie Electrică și Electronică',
+          field: 'Licență: Calculatoare și Tehnologia Informației',
+          period: '2021 – 2025',
+          status: 'Inginer',
         },
         {
           name: 'Liceul Teoretic „Dunărea", Galați',
@@ -210,7 +217,7 @@ export const translations = {
       items: [
         {
           title: 'Animare și Editare Video',
-          description: 'Gestionez un canal de YouTube dedicat animațiilor create cu Blender, Premiere Pro și After Effects. Pentru mai multe detalii și pentru a viziona videoclipurile mele, vă invit să accesați canalul meu de YouTube.',
+          description: 'Gestionez un canal de YouTube dedicat animațiilor create cu Blender, Premiere Pro și After Effects. Pentru mai multe detalii și pentru a viziona videoclipurile mele, vă invit să acceseți canalul meu de YouTube.',
           link: 'https://www.youtube.com/@Valentinebej/featured',
           icon: 'youtube',
         },
@@ -269,9 +276,16 @@ export const translations = {
         {
           name: '"Dunărea de Jos" University, Galați',
           degree: 'Faculty of Automation, Computers, Electrical and Electronic Engineering',
-          field: 'Computers and Information Technology',
-          period: '2021 – present',
-          status: 'Student',
+          field: "Master's Degree: Advanced Information Technologies (TIA)",
+          period: '2025 – present',
+          status: "Master's Student",
+        },
+        {
+          name: '"Dunărea de Jos" University, Galați',
+          degree: 'Faculty of Automation, Computers, Electrical and Electronic Engineering',
+          field: "Bachelor's Degree: Computers and Information Technology",
+          period: '2021 – 2025',
+          status: 'Engineer',
         },
         {
           name: '"Dunărea" Theoretical High School, Galați',
