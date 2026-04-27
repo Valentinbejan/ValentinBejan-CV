@@ -81,7 +81,7 @@ export default function Navbar() {
               ))}
               
               <motion.a
-                href={`/cv/cv-${locale}.pdf`}
+                href={locale === "en" ? "/cv/CV_Valentin_Bejan_2026.pdf" : `/cv/cv-${locale}.pdf`}
                 download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -135,7 +135,7 @@ export default function Navbar() {
                 ))}
                 
                 <motion.a
-                  href={`/cv/cv-${locale}.pdf`}
+                  href={locale === "en" ? "/cv/CV_Valentin_Bejan_2026.pdf" : `/cv/cv-${locale}.pdf`}
                   download
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold shadow-md"

@@ -25,6 +25,13 @@ export const translations = {
       title: 'Experiență Profesională',
       jobs: [
         {
+          company: 'LILT AI · Freelancer',
+          location: 'Remote',
+          position: 'Romanian AI Content Expert',
+          period: 'Ian. 2026 – prezent',
+          description: '',
+        },
+        {
           company: 'Still-Co',
           location: 'Galați, România',
           position: 'Practicant',
@@ -96,6 +103,13 @@ export const translations = {
       viewGithub: 'Vezi pe GitHub',
       viewProject: 'Vezi Proiectul',
       items: [
+        {
+          name: 'VibeScout (TheCon 2025)',
+          description: 'Aplicație de hackathon: descoperă locații din România prin hărți, filtre, chatbot AI. Participare individuală - locul 4 la general (cel mai bun proiect realizat de o singură persoană) din ~30 de echipe; primele 3 au fost echipe formate din mai mulți membri.',
+          tech: ['React Native', 'Expo', 'TypeScript', 'Supabase'],
+          link: 'https://github.com/Valentinbejan/thecon-2025',
+          linkType: 'github',
+        },
         {
           name: 'Pizza Site',
           description: 'Aplicație web a unei pizzerii, pentru a comanda diverse tipuri de pizza. Site-ul permite înregistrarea și logarea utilizatorilor, selectarea produsului și validarea utilizatorilor.',
@@ -255,6 +269,13 @@ export const translations = {
       title: 'Professional Experience',
       jobs: [
         {
+          company: 'LILT AI · Freelancer',
+          location: 'Remote',
+          position: 'Romanian AI Content Expert',
+          period: 'Jan. 2026 – present',
+          description: '',
+        },
+        {
           company: 'Still-Co',
           location: 'Galați, Romania',
           position: 'Intern',
@@ -326,6 +347,13 @@ export const translations = {
       viewGithub: 'View on GitHub',
       viewProject: 'View Project',
       items: [
+        {
+          name: 'VibeScout (TheCon 2025)',
+          description: 'Hackathon app: discover Romanian venues via maps, filters, AI chatbot. Solo entry—4th place overall (best 1-man project) out of ~30 teams; top 3 were multi-person teams.',
+          tech: ['React Native', 'Expo', 'TypeScript', 'Supabase'],
+          link: 'https://github.com/Valentinbejan/thecon-2025',
+          linkType: 'github',
+        },
         {
           name: 'Pizza Site',
           description: 'A web application for a pizzeria to order various types of pizza. The site allows user registration and login, product selection, and user validation.',

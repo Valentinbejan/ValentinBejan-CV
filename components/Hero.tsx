@@ -185,7 +185,7 @@ export default function Hero() {
           </motion.a>
           
           <motion.a
-            href={`/cv/cv-${locale}.pdf`}
+            href={locale === "en" ? "/cv/CV_Valentin_Bejan_2026.pdf" : `/cv/cv-${locale}.pdf`}
             download
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
