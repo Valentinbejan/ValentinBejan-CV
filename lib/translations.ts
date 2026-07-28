@@ -349,8 +349,6 @@ export const translations = {
       copy: 'Copiază',
       copied: 'Copiat',
       sealLegend: 'VALENTIN BEJAN · GALAȚI · ROMÂNIA · ACT PROPRIU · ',
-      issuance:
-        'Actul acesta este emis de titular. Nu este un document oficial și nu pretinde să fie: valoarea lui stă în referințele pe care le poți verifica singur.',
     },
     footer: {
       rights: '© 2026 Valentin Bejan. Toate drepturile rezervate.',
@@ -702,8 +700,6 @@ export const translations = {
       copy: 'Copy',
       copied: 'Copied',
       sealLegend: 'VALENTIN BEJAN · GALAȚI · ROMANIA · SELF-ISSUED · ',
-      issuance:
-        'This record is issued by its bearer. It is not an official document and does not pretend to be one: its value is in the references you can check yourself.',
     },
     footer: {
       rights: '© 2026 Valentin Bejan. All rights reserved.',

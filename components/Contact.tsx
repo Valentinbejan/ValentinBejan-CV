@@ -156,9 +156,6 @@ export default function Contact() {
               className="h-32 w-32 text-cover-foil"
               legend={t("sealLegend")}
             />
-            <p className="measure-tight text-record text-cover-ink-2">
-              {t("issuance")}
-            </p>
           </div>
         </div>
       </div>
