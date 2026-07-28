@@ -1,27 +1,49 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 
-export default function LanguageToggle() {
+/* Romanian diploma supplements are issued in two languages side by side.
+   The pair belongs to the document, so both are always shown. */
+export default function LanguageToggle({ onCover }: { onCover: boolean }) {
   const pathname = usePathname();
   const router = useRouter();
-  const currentLocale = pathname.split("/")[1] || "ro";
+  const current = pathname.split("/")[1] === "en" ? "en" : "ro";
 
-  const toggleLanguage = () => {
-    const newLocale = currentLocale === "ro" ? "en" : "ro";
-    const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`);
-    router.push(newPath);
+  const go = (next: "ro" | "en") => {
+    if (next === current) return;
+    router.push(pathname.replace(`/${current}`, `/${next}`));
   };
 
   return (
-    <motion.button
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      onClick={toggleLanguage}
-      className="px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium"
+    <div
+      className={`field-label flex items-stretch border ${
+        onCover ? "border-cover-ink-2/40" : "border-rule"
+      }`}
+      role="group"
+      aria-label={current === "ro" ? "Limba actului" : "Document language"}
     >
-      {currentLocale === "ro" ? "EN" : "RO"}
-    </motion.button>
+      {(["ro", "en"] as const).map((code) => {
+        const active = code === current;
+        return (
+          <button
+            key={code}
+            type="button"
+            onClick={() => go(code)}
+            aria-current={active ? "true" : undefined}
+            className={`px-2.5 py-2 transition-colors duration-200 ${
+              active
+                ? onCover
+                  ? "bg-cover-ink-2/20 text-cover-ink"
+                  : "bg-ink/10 text-ink"
+                : onCover
+                  ? "text-cover-ink-2 hover:text-cover-ink"
+                  : "text-ink-3 hover:text-ink"
+            }`}
+          >
+            {code.toUpperCase()}
+          </button>
+        );
+      })}
+    </div>
   );
 }

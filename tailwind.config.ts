@@ -1,104 +1,95 @@
 // cv-website/tailwind.config.ts
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
+
+const token = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
 
 const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: 'class',
+  darkMode: ["class", ".uv"],
   theme: {
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7e22ce',
-          800: '#6b21a8',
-          900: '#581c87',
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        stock: token("stock"),
+        "stock-2": token("stock-2"),
+        panel: token("panel"),
+        ink: token("ink"),
+        "ink-2": token("ink-2"),
+        "ink-3": token("ink-3"),
+        rule: token("rule"),
+        guilloche: token("guilloche"),
+        foil: token("foil"),
+        "foil-text": token("foil-text"),
+        stamp: token("stamp"),
+        verify: token("verify"),
+        cover: token("cover"),
+        "cover-2": token("cover-2"),
+        "cover-ink": token("cover-ink"),
+        "cover-ink-2": token("cover-ink-2"),
+        "cover-foil": token("cover-foil"),
+        "cover-guilloche": token("cover-guilloche"),
       },
-      backgroundSize: {
-        '300%': '300%',
+      fontFamily: {
+        display: ["var(--font-display)", "Georgia", "serif"],
+        record: ["var(--font-record)", "system-ui", "sans-serif"],
+        serial: ["var(--font-serial)", "ui-monospace", "monospace"],
+      },
+      fontSize: {
+        // Document scale — steps are obvious, not incremental.
+        //
+        // The serial family below is the small end of the ramp: five steps a
+        // printed form actually uses, from the machine-readable strip up to a
+        // data value. They are plain strings on purpose, so leading stays
+        // inherited the way inline measurement text needs it.
+        mrz: "0.5625rem", // machine-readable strip, narrow screens
+        index: "0.625rem", // nav fields, index numerals, stamp date
+        ref: "0.6875rem", // reference codes, hosts, the strip at sm and up
+        proof: "0.75rem", // verification links, annex materials
+        data: "0.8125rem", // periods, dates, cover data values
+
+        // Engraved entity titles: the interior rung between entry and heading.
+        lede: "1rem", // annex description at sm and up
+        "entity-sm": "1.375rem", // competence category
+        entity: "1.75rem", // employer, qualification, interest
+        annex: "2.125rem", // annex title — the loudest interior entity
+
+        field: ["0.6875rem", { lineHeight: "1.1", letterSpacing: "0.16em" }],
+        record: ["0.9375rem", { lineHeight: "1.55" }],
+        entry: ["1.0625rem", { lineHeight: "1.45" }],
+        // A three-to-one step between the bearer and the denomination, so the
+        // name owns the viewport and the qualification reads as its subtitle.
+        // The positioning line must outrank every interior heading, or the word
+        // "Education" is louder than what he actually does.
+        denomination: [
+          "clamp(1.7rem, 3.6vw, 3.1rem)",
+          { lineHeight: "1.08", letterSpacing: "-0.018em" },
+        ],
+        bearer: [
+          "clamp(3rem, 10vw, 7.6rem)",
+          { lineHeight: "0.86", letterSpacing: "-0.03em" },
+        ],
+        heading: [
+          "clamp(1.9rem, 3.6vw, 2.9rem)",
+          { lineHeight: "1", letterSpacing: "-0.02em" },
+        ],
+      },
+      maxWidth: {
+        document: "78rem",
+        page: "64rem",
+      },
+      transitionTimingFunction: {
+        // exponential ease-out — the document settles, it never bounces
+        settle: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
       animation: {
-        'gradient': 'gradient 8s linear infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'slide-up': 'slide-up 0.5s ease-out',
-        'shine': 'shine 2.5s infinite',
-      },
-      keyframes: {
-        gradient: {
-          '0%, 100%': {
-            'background-position': '0% 50%',
-          },
-          '50%': {
-            'background-position': '100% 50%',
-          },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        glow: {
-          '0%': { 'box-shadow': '0 0 5px rgb(168 85 247 / 0.5)' },
-          '100%': { 'box-shadow': '0 0 20px rgb(168 85 247 / 0.5)' },
-        },
-        'slide-up': {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        shine: {
-          '0%': { 'box-shadow': '0 0 0 0 rgba(147, 51, 234, 0.4)' },
-          '70%': { 'box-shadow': '0 0 0 10px rgba(147, 51, 234, 0)' },
-          '100%': { 'box-shadow': '0 0 0 0 rgba(147, 51, 234, 0)' },
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        "foil-catch": "foil-catch 1.4s cubic-bezier(0.16,1,0.3,1) 0.3s both",
+        "stamp-press": "stamp-press 0.7s cubic-bezier(0.16,1,0.3,1) both",
+        "lamp-sweep": "lamp-sweep 22s ease-in-out infinite",
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;

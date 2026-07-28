@@ -26,3 +26,16 @@ yarn-error.log*
 
 # local env files
 .env*.local
+# typescript incremental build artifact
+tsconfig.tsbuildinfo
+
+# impeccable: keep the design record, drop caches and session logs
+.impeccable/hook.cache.json
+.impeccable/questions/
+
+# raw source assets kept locally — the web-sized derivatives in public/img are
+# what the site actually ships (19MB original, never served)
+/DSC02945.JPG
+
+# working copy of the CV; the served one lives in public/cv/
+/CV_BejanValentin_2026_Summer.pdf

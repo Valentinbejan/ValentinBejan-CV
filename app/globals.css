@@ -1,331 +1,325 @@
-/* cv-website/app/globals.css */
+/* cv-website/app/globals.css
+   Security-document design system. Two lighting conditions, one document:
+   DAYLIGHT (default) and UV (inspection lamp). */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Modern CSS Variables */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.75rem;
+    /* Interior pages — anti-photocopy tinted security stock, deliberately cool */
+    --stock: 233 238 243;
+    --stock-2: 222 230 238;
+    --panel: 244 247 250;
+
+    --ink: 10 27 77;
+    --ink-2: 53 71 126;
+    /* 5.1:1 on --stock, 4.8:1 on --stock-2 — these carry field labels and the
+       whole earlier-work column, so they clear AA on both grounds. */
+    --ink-3: 84 98 138;
+
+    --rule: 176 190 214;
+    /* Dark enough to read as engine turning on pale stock, not a ghost. */
+    --guilloche: 88 112 172;
+
+    --foil: 166 122 34;
+    --foil-text: 122 88 20;
+    --stamp: 122 46 134;
+    /* 6.0:1 on --stock, 5.6:1 on --stock-2 */
+    --verify: 11 100 88;
+
+    /* The cover — drenched cobalt, same in both lighting conditions but deeper under UV */
+    --cover: 7 18 51;
+    --cover-2: 12 30 78;
+    --cover-ink: 242 246 255;
+    --cover-ink-2: 159 180 232;
+    --cover-foil: 224 183 92;
+    --cover-guilloche: 90 124 210;
+
+    --lamp: 0.75;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 217.2 91.2% 59.8%;
-  }
-}
+  .uv {
+    --stock: 11 10 31;
+    --stock-2: 20 18 46;
+    --panel: 16 15 38;
 
-@layer base {
-  * {
-    @apply border-border;
+    --ink: 232 228 255;
+    --ink-2: 169 162 216;
+    --ink-3: 126 119 176;
+
+    --rule: 58 52 112;
+    --guilloche: 75 63 158;
+
+    --foil: 232 192 106;
+    --foil-text: 232 192 106;
+    --stamp: 192 96 224;
+    --verify: 53 224 176;
+
+    --cover: 6 5 20;
+    --cover-2: 12 10 38;
+    --cover-ink: 236 232 255;
+    --cover-ink-2: 169 162 216;
+    --cover-foil: 232 192 106;
+    --cover-guilloche: 110 88 220;
+
+    --lamp: 1;
   }
-  
+
   html {
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
+    /* the fixed document header band */
+    scroll-padding-top: 5.5rem;
   }
-  
+
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: rgb(var(--stock));
+    color: rgb(var(--ink));
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgb(var(--stamp) / 0.25);
+    color: rgb(var(--ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--stamp));
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* Numerals in the record must line up in columns like a printed form */
+  .tnum {
+    font-variant-numeric: tabular-nums lining-nums;
   }
 }
 
-/* Modern Glass Morphism Effects */
 @layer components {
-  .glass {
-    @apply relative overflow-hidden;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  }
-  
-  .glass-card {
-    @apply relative overflow-hidden rounded-2xl;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  }
-  
-  .gradient-bg {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  }
-  
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  }
-  
-  .hover-lift {
-    @apply transition-all duration-300 ease-out;
-  }
-  
-  .hover-lift:hover {
-    @apply -translate-y-2 shadow-2xl;
-  }
-  
-  .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  /* ---- Document typography ------------------------------------------------ */
+
+  /* Engraved display — the intaglio register */
+  .engraved {
+    font-family: var(--font-display), Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    letter-spacing: -0.018em;
+    line-height: 0.94;
   }
 
-  .aurora-bg {
-    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-    background-size: 300% 300%;
-    animation: aurora 15s ease infinite;
+  /* Field labels — the small caps that name a box on an official form */
+  .field-label {
+    font-family: var(--font-record), system-ui, sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 92;
   }
 
-  .text-glow {
-    text-shadow: 0 0 20px rgba(168, 85, 247, 0.5),
-                 0 0 40px rgba(168, 85, 247, 0.3),
-                 0 0 60px rgba(168, 85, 247, 0.2);
+  /* Serial numbers, dates, reference codes — measurement, not costume */
+  .serial {
+    font-family: var(--font-serial), ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.06em;
   }
 
-  .neon-border {
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5),
-                0 0 20px rgba(168, 85, 247, 0.3),
-                inset 0 0 10px rgba(168, 85, 247, 0.2);
+  /* ---- Document surfaces -------------------------------------------------- */
+
+  /* A field of the record: ruled, not carded. Hairlines only. */
+  .field-row {
+    border-top: 1px solid rgb(var(--rule) / 0.75);
+  }
+
+  .microprint {
+    font-family: var(--font-serial), ui-monospace, monospace;
+    font-size: 4px;
+    line-height: 1;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .microprint {
+      font-size: 5px;
+    }
+  }
+
+  /* Foil: a real specular sweep, not a flat gold fill */
+  .foil-text {
+    background-image: linear-gradient(
+      100deg,
+      rgb(var(--foil)) 0%,
+      rgb(var(--foil)) 34%,
+      rgb(255 244 214) 47%,
+      rgb(var(--foil)) 60%,
+      rgb(var(--foil)) 100%
+    );
+    background-size: 250% 100%;
+    background-position: 0% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Intaglio relief: ink sitting proud of the paper */
+  .relief {
+    text-shadow:
+      0 1px 0 rgb(var(--stock) / 0.8),
+      0 -1px 1px rgb(var(--ink) / 0.14);
+  }
+
+  .cover-relief {
+    text-shadow:
+      0 1px 1px rgb(0 0 0 / 0.55),
+      0 -1px 0 rgb(var(--cover-ink) / 0.14);
+  }
+
+  /* The bearer's photograph, mounted on the page */
+  .photo-mount {
+    box-shadow:
+      0 1px 2px rgb(var(--ink) / 0.16),
+      0 12px 28px -10px rgb(var(--ink) / 0.4);
+  }
+
+  /* Perforation: the tear-off boundary where the document changes register */
+  .perforated {
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      rgb(var(--rule)) 0 1.4px,
+      transparent 1.6px
+    );
+    background-size: 11px 11px;
+    background-repeat: repeat-x;
+    background-position: center;
+    height: 11px;
+  }
+
+  /* The stock itself: two crossed line screens, the anti-copy tint every
+     security document is printed on. Without this the interior is flat colour
+     pretending to be paper. */
+  .security-tint {
+    background-image:
+      repeating-linear-gradient(
+        58deg,
+        rgb(var(--guilloche) / 0.07) 0 1px,
+        transparent 1px 6px
+      ),
+      repeating-linear-gradient(
+        -58deg,
+        rgb(var(--guilloche) / 0.04) 0 1px,
+        transparent 1px 9px
+      );
+  }
+
+  /* Violet office ink, pressed into the page */
+  .stamp-mark {
+    border: 2.5px solid rgb(var(--stamp) / 0.75);
+    color: rgb(var(--stamp) / 0.9);
+    mix-blend-mode: multiply;
+  }
+
+  .uv .stamp-mark {
+    mix-blend-mode: screen;
   }
 }
 
-/* Animation Keyframes */
-@keyframes gradient-shift {
+@layer utilities {
+  .measure {
+    max-width: 68ch;
+  }
+  .measure-tight {
+    max-width: 58ch;
+  }
+}
+
+/* The one authored moment: raking light crossing the cover.
+   Driven by --lx/--ly (pointer, rAF-throttled) with a slow idle sweep fallback. */
+@keyframes lamp-sweep {
   0% {
-    background-position: 0% 50%;
+    --lx: 18%;
+    --ly: 26%;
   }
   50% {
-    background-position: 100% 50%;
+    --lx: 78%;
+    --ly: 62%;
   }
   100% {
-    background-position: 0% 50%;
+    --lx: 18%;
+    --ly: 26%;
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+@property --lx {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 32%;
+}
+@property --ly {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 34%;
+}
+
+/* Foil catches the light once when it enters the frame */
+@keyframes foil-catch {
+  0% {
+    background-position: 130% 0;
   }
-  33% {
-    transform: translateY(-20px) rotate(1deg);
-  }
-  66% {
-    transform: translateY(10px) rotate(-1deg);
+  100% {
+    background-position: 0% 0;
   }
 }
 
-@keyframes glow {
-  from {
-    box-shadow: 0 0 10px -10px #667eea;
-  }
-  to {
-    box-shadow: 0 0 20px 10px #667eea;
-  }
-}
-
-@keyframes slide-up {
-  from {
+@keyframes stamp-press {
+  0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: rotate(-14deg) scale(1.5);
   }
-  to {
+  55% {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes aurora {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
+    transform: rotate(-7deg) scale(0.97);
   }
   100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
     opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
+    transform: rotate(-7deg) scale(1);
   }
 }
 
-@keyframes morph {
-  0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-  50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-  }
-  100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-}
-
-@keyframes levitate {
-  0% {
-    transform: translateY(0px);
-  }
-  30% {
-    transform: translateY(-20px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-@keyframes text-reveal {
-  0% {
-    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-  }
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-}
-
-/* Modern Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
 }
-
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-900;
+  background: rgb(var(--stock-2));
 }
-
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+  background: rgb(var(--rule));
+  border: 3px solid rgb(var(--stock-2));
+  border-radius: 99px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500 dark:bg-gray-500;
+  background: rgb(var(--ink-3));
 }
 
-/* Focus Styles */
-.focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
-}
-
-/* Gradient Backgrounds */
-.gradient-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.gradient-secondary {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.gradient-mesh {
-  background-image: 
-    radial-gradient(at 40% 20%, hsla(280, 100%, 74%, 0.3) 0px, transparent 50%),
-    radial-gradient(at 80% 0%, hsla(240, 100%, 70%, 0.3) 0px, transparent 50%),
-    radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.3) 0px, transparent 50%),
-    radial-gradient(at 80% 100%, hsla(240, 100%, 70%, 0.3) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(280, 100%, 74%, 0.3) 0px, transparent 50%);
-}
-
-/* Animated text gradient */
-.animated-gradient-text {
-  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c, #667eea);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 3s linear infinite;
-}
-
-/* Shimmer effect */
-.shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
-/* Parallax scrolling */
-.parallax {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.parallax-layer {
-  position: absolute;
-  inset: 0;
-}
-
-/* Loading animation */
-.loading-dots span {
-  animation: loading 1.4s infinite;
-}
-
-.loading-dots span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.loading-dots span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes loading {
-  0%, 80%, 100% {
-    transform: scale(0);
-    opacity: 0.5;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  40% {
-    transform: scale(1);
-    opacity: 1;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
   }
 }

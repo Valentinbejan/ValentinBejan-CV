@@ -1,219 +1,199 @@
-// cv-website/components/Hero.tsx
+// cv-website/components/Hero.tsx — the cover of the record.
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { MapPin, Send, FileDown, Sparkles, ChevronDown } from "lucide-react";
 import { useParams } from "next/navigation";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { GuillocheRosette, LatheRule } from "./security/Guilloche";
+import Seal from "./security/Seal";
+import { cvHref } from "@/lib/cv";
+
+const ENGRAVING = "url(/img/portrait-engraved.png)";
+
+// Both plates must occupy exactly the same box or the lit copy drifts out of
+// register. On small screens the plate sits high, behind the name, so it never
+// competes with body copy for contrast.
+const PLATE =
+  "absolute right-[-18%] top-[27%] h-[44%] w-[72%] -translate-y-1/2 sm:right-[-2%] sm:top-1/2 sm:h-[70%] sm:w-[54%] lg:right-[4%] lg:h-[80%] lg:w-[40%]";
+
+const PLATE_MASK = {
+  WebkitMaskSize: "contain",
+  maskSize: "contain",
+  WebkitMaskRepeat: "no-repeat",
+  maskRepeat: "no-repeat",
+  WebkitMaskPosition: "center",
+  maskPosition: "center",
+} as const;
 
 export default function Hero() {
-  const t = useTranslations("hero");
+  const t = useTranslations("cover");
   const params = useParams();
   const locale = (params?.locale as string) || "ro";
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const frame = useRef(0);
+  const [handled, setHandled] = useState(false);
+
+  const onPointerMove = useCallback((e: React.PointerEvent<HTMLElement>) => {
+    if (e.pointerType === "touch") return;
+    const el = sectionRef.current;
+    if (!el) return;
+    if (frame.current) return;
+    const { clientX, clientY } = e;
+    frame.current = requestAnimationFrame(() => {
+      frame.current = 0;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--lx", `${((clientX - r.left) / r.width) * 100}%`);
+      el.style.setProperty("--ly", `${((clientY - r.top) / r.height) * 100}%`);
+    });
+    setHandled(true);
+  }, []);
+
+  useEffect(() => () => cancelAnimationFrame(frame.current), []);
+
+  const fields = [
+    { label: t("issuedLabel"), value: t("issuedValue") },
+    { label: t("placeLabel"), value: t("placeValue") },
+    { label: t("statusLabel"), value: t("statusValue") },
+    { label: t("languagesLabel"), value: t("languagesValue") },
+  ];
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center px-4 pt-20 pb-20">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          style={{ y }}
-          className="absolute inset-0"
-        >
-          {/* Floating shapes */}
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-32 h-32 rounded-full bg-gradient-to-br from-purple-400/10 to-pink-400/10"
-              style={{
-                left: `${20 + i * 15}%`,
-                top: `${10 + i * 10}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                x: [0, 20, 0],
-                rotate: [0, 360],
-              }}
-              transition={{
-                duration: 15 + i * 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.5,
-              }}
-            />
-          ))}
-        </motion.div>
+    <section
+      id="cover"
+      ref={sectionRef}
+      onPointerMove={onPointerMove}
+      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-cover text-cover-ink"
+    >
+      {/* ── The cover's engine-turned ground ─────────────────────────── */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 ${
+          handled ? "" : "animate-lamp-sweep"
+        }`}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_18%_0%,rgb(var(--cover-2))_0%,rgb(var(--cover))_62%)]" />
+
+        {/* rosette, bleeding off the right edge */}
+        <GuillocheRosette
+          className="absolute -right-[26%] top-1/2 aspect-square h-[145%] -translate-y-1/2 bg-cover-guilloche sm:-right-[14%] lg:right-[-6%] lg:h-[125%]"
+          opacity={0.62}
+        />
+
+        {/* the intaglio portrait, always present */}
+        <div
+          className={`${PLATE} bg-gradient-to-b from-cover-guilloche via-cover-ink-2 to-cover-foil opacity-[0.13] sm:opacity-[0.18] lg:opacity-[0.22]`}
+          style={{
+            ...PLATE_MASK,
+            WebkitMaskImage: ENGRAVING,
+            maskImage: ENGRAVING,
+          }}
+        />
+
+        {/* the same plate, resolved wherever the light rakes across it */}
+        <div
+          className={`${PLATE} bg-gradient-to-b from-cover-ink via-cover-foil to-cover-ink-2 opacity-45 sm:opacity-60 lg:opacity-75`}
+          style={{
+            WebkitMaskImage: `${ENGRAVING}, radial-gradient(circle at var(--lx) var(--ly), #000 0%, #000 12%, transparent 46%)`,
+            maskImage: `${ENGRAVING}, radial-gradient(circle at var(--lx) var(--ly), #000 0%, #000 12%, transparent 46%)`,
+            WebkitMaskSize: "contain, 100% 100%",
+            maskSize: "contain, 100% 100%",
+            WebkitMaskRepeat: "no-repeat, no-repeat",
+            maskRepeat: "no-repeat, no-repeat",
+            WebkitMaskPosition: "center, center",
+            maskPosition: "center, center",
+            WebkitMaskComposite: "source-in",
+            maskComposite: "intersect",
+          }}
+        />
+
+        {/* the light itself */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--lx)_var(--ly),rgb(var(--cover-guilloche)/0.22)_0%,transparent_42%)] mix-blend-screen" />
       </div>
 
-      {/* Hero Content */}
-      <motion.div 
-        style={{ opacity }}
-        className="relative z-10 max-w-4xl mx-auto text-center"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-          className="mb-8"
-        >
-          <motion.div 
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 backdrop-blur-sm"
-            whileHover={{ scale: 1.05 }}
-            animate={{
-              boxShadow: [
-                "0 0 20px rgba(168, 85, 247, 0)",
-                "0 0 40px rgba(168, 85, 247, 0.3)",
-                "0 0 20px rgba(168, 85, 247, 0)",
-              ],
-            }}
-            transition={{
-              boxShadow: {
-                duration: 2,
-                repeat: Infinity,
-              },
-            }}
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-            </motion.div>
-            <span className="text-sm font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              {t("role")}
-            </span>
-          </motion.div>
-        </motion.div>
+      {/* ── The bearer ───────────────────────────────────────────────── */}
+      <div className="relative z-10 mx-auto flex w-full max-w-document flex-1 flex-col justify-center px-5 pb-6 pt-24 sm:px-8 sm:pt-28">
+        <h1 className="engraved cover-relief text-bearer text-cover-ink">
+          <span className="block">{t("givenName")}</span>
+          <span className="block">{t("familyName")}</span>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 font-light"
-        >
-          {t("greeting")}
-        </motion.p>
+        <LatheRule className="mt-7 h-6 w-full max-w-xl bg-cover-guilloche opacity-90" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-12 overflow-hidden"
-        >
+        <p className="engraved mt-6 max-w-2xl text-denomination text-cover-ink">
+          {t("denomination")}
+        </p>
+        <p className="measure mt-4 text-record text-cover-ink-2 sm:text-entry">
+          {t("standfirst")}
+        </p>
+      </div>
 
-          <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold"
-            animate={{
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            style={{
-              backgroundImage: "linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c, #667eea)",
-              backgroundSize: "200% auto",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            {t("name")}
-          </motion.h1>
-          
-          {/* Glowing line under name */}
-          <motion.div
-            className="mx-auto mt-4 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"
-            initial={{ width: 0 }}
-            animate={{ width: "50%" }}
-            transition={{ duration: 1, delay: 0.5 }}
-          />
-        </motion.div>
+      {/* ── The data panel ───────────────────────────────────────────── */}
+      <div className="relative z-10 mx-auto w-full max-w-document px-5 pb-8 sm:px-8">
+        <div className="flex flex-col gap-8 border-t border-cover-ink-2/25 pt-7 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex items-start gap-5 sm:gap-7">
+            {/* the bearer's photograph, mounted on the page */}
+            <picture className="flex-none">
+              <source srcSet="/img/portrait.webp" type="image/webp" />
+              <img
+                src="/img/portrait.jpg"
+                width={900}
+                height={1200}
+                alt={t("photoAlt")}
+                className="photo-mount h-[104px] w-[78px] flex-none object-cover object-top ring-1 ring-cover-foil/50 sm:h-[132px] sm:w-[99px]"
+              />
+            </picture>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex items-center justify-center gap-2 text-gray-500 dark:text-gray-400 mb-8"
-        >
-          <motion.div
-            animate={{ 
-              y: [0, -5, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <MapPin className="w-5 h-5" />
-          </motion.div>
-          <span className="text-lg">{t("location")}</span>
-        </motion.div>
+            <dl className="grid grid-cols-2 gap-x-8 gap-y-4 sm:gap-x-12">
+              {fields.map((f) => (
+                <div key={f.label}>
+                  <dt className="field-label text-cover-ink-2">{f.label}</dt>
+                  <dd className="serial mt-1.5 text-data text-cover-ink">
+                    {f.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative inline-flex items-center gap-2 px-8 py-4 overflow-hidden rounded-2xl font-semibold text-white shadow-2xl transition-all duration-300"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600" />
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400"
-              initial={{ x: "100%" }}
-              whileHover={{ x: 0 }}
-              transition={{ duration: 0.3 }}
+          <div className="flex items-end gap-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={cvHref(locale)}
+                download
+                className="field-label inline-flex items-center justify-center gap-2 bg-cover-foil px-6 py-3.5 text-cover transition-all duration-300 ease-settle hover:brightness-110 focus-visible:outline-cover-foil"
+              >
+                {t("certifiedCopy")}
+              </a>
+              <a
+                href="#annexes"
+                className="field-label inline-flex items-center justify-center gap-2 border border-cover-ink-2/45 px-6 py-3.5 text-cover-ink transition-all duration-300 ease-settle hover:border-cover-foil hover:text-cover-foil"
+              >
+                {t("verify")}
+              </a>
+            </div>
+
+            <Seal
+              className="hidden h-[104px] w-[104px] flex-none animate-[foil-catch_1.6s_cubic-bezier(0.16,1,0.3,1)_0.4s_both] text-cover-foil xl:block"
+              legend={t("sealLegend")}
             />
-            <Send className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            <span className="relative z-10">Contact</span>
-          </motion.a>
-          
-          <motion.a
-            href={locale === "en" ? "/cv/CV_Valentin_Bejan_2026.pdf" : `/cv/cv-${locale}.pdf`}
-            download
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative inline-flex items-center gap-2 px-8 py-4 overflow-hidden bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-2 border-purple-200 dark:border-purple-700 text-gray-700 dark:text-gray-300 font-semibold rounded-2xl shadow-lg transition-all duration-300"
+          </div>
+        </div>
+      </div>
+
+      {/* ── Machine-readable foot ────────────────────────────────────── */}
+      <div className="relative z-10 border-t border-cover-ink-2/25 bg-cover-2/70">
+        <div className="mx-auto max-w-document overflow-hidden px-5 py-3 sm:px-8">
+          <p
+            className="serial whitespace-nowrap text-mrz leading-[1.7] text-cover-ink-2/80 sm:text-ref"
+            aria-hidden="true"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <FileDown className="relative z-10 w-5 h-5 group-hover:translate-y-1 transition-transform" />
-            <span className="relative z-10">Download CV</span>
-          </motion.a>
-        </motion.div>
-      </motion.div>
-      
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 inset-x-0 flex justify-center"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.5 }}
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-gray-400 dark:text-gray-600"
-        >
-          <span className="text-xs uppercase tracking-widest">Scroll</span>
-          <ChevronDown className="w-5 h-5" />
-        </motion.div>
-      </motion.div>
+            VB&lt;&lt;CV&lt;2026&lt;&lt;RO&lt;EN&lt;&lt;GALATI&lt;ROMANIA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+            <br />
+            COMPUTER&lt;ENGINEERING&lt;&lt;AI&lt;&lt;LLM&lt;&lt;RAG&lt;&lt;JAVA&lt;&lt;REACT&lt;&lt;&lt;&lt;&lt;&lt;
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
