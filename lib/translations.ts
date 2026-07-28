@@ -104,6 +104,27 @@ export const translations = {
       viewProject: 'Vezi Proiectul',
       items: [
         {
+          name: 'LLM UI — Chat cu RAG',
+          description: 'Lucrare de licență (2025): interfață de chat self-hosted pentru LLM-uri locale. Next.js peste PostgreSQL 16 + pgvector, cu RAG pe istoricul conversațiilor, ingestie de documente, căutare web și TTS. Include un pipeline de fine-tuning ORPO pentru un model Llama 3.2 1B personalizat.',
+          tech: ['Next.js 15', 'TypeScript', 'PostgreSQL', 'pgvector', 'Prisma', 'Ollama', 'RAG'],
+          link: 'https://github.com/Valentinbejan/ollama-ui-llm-rag',
+          linkType: 'github',
+        },
+        {
+          name: 'Japanese Voice Studio',
+          description: 'Studio text-to-speech cu frontend Next.js și backend serverless Modal pe GPU, cu curățare audio în WASM și transcriere WebGPU.',
+          tech: ['Next.js', 'Modal', 'WASM', 'WebGPU', 'Cloudflare R2'],
+          link: 'https://irodori-tts-studio.vercel.app/',
+          linkType: 'website',
+        },
+        {
+          name: 'Maritime DB Monitor',
+          description: 'Dashboard de sănătate PostgreSQL alimentat de AI: un daemon colectează metrici și loguri, iar un LLM conștient de context analizează scheme, planuri de execuție și tuning-ul de vacuum.',
+          tech: ['Python', 'PostgreSQL', 'Streamlit', 'Docker', 'LLM'],
+          link: 'https://github.com/Valentinbejan/maritime-db-monitor',
+          linkType: 'github',
+        },
+        {
           name: 'VibeScout (TheCon 2025)',
           description: 'Aplicație de hackathon: descoperă locații din România prin hărți, filtre, chatbot AI. Participare individuală - locul 4 la general (cel mai bun proiect realizat de o singură persoană) din ~30 de echipe; primele 3 au fost echipe formate din mai mulți membri.',
           tech: ['React Native', 'Expo', 'TypeScript', 'Supabase'],
@@ -347,6 +368,27 @@ export const translations = {
       viewGithub: 'View on GitHub',
       viewProject: 'View Project',
       items: [
+        {
+          name: 'LLM UI — Chat with RAG',
+          description: "Bachelor's thesis (2025): self-hosted chat UI for local LLMs. Next.js over PostgreSQL 16 + pgvector, with RAG across conversation history, document ingestion, web search and TTS. Ships an ORPO fine-tuning pipeline for a custom Llama 3.2 1B.",
+          tech: ['Next.js 15', 'TypeScript', 'PostgreSQL', 'pgvector', 'Prisma', 'Ollama', 'RAG'],
+          link: 'https://github.com/Valentinbejan/ollama-ui-llm-rag',
+          linkType: 'github',
+        },
+        {
+          name: 'Japanese Voice Studio',
+          description: 'Text-to-speech studio with a Next.js frontend and a serverless Modal GPU backend, featuring WASM audio clean-up and WebGPU transcription.',
+          tech: ['Next.js', 'Modal', 'WASM', 'WebGPU', 'Cloudflare R2'],
+          link: 'https://irodori-tts-studio.vercel.app/',
+          linkType: 'website',
+        },
+        {
+          name: 'Maritime DB Monitor',
+          description: 'AI-powered PostgreSQL health dashboard: a daemon collects metrics and logs, and a context-aware LLM analyses schemas, execution plans and vacuum tuning.',
+          tech: ['Python', 'PostgreSQL', 'Streamlit', 'Docker', 'LLM'],
+          link: 'https://github.com/Valentinbejan/maritime-db-monitor',
+          linkType: 'github',
+        },
         {
           name: 'VibeScout (TheCon 2025)',
           description: 'Hackathon app: discover Romanian venues via maps, filters, AI chatbot. Solo entry—4th place overall (best 1-man project) out of ~30 teams; top 3 were multi-person teams.',
