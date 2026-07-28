@@ -1,153 +1,159 @@
-// cv-website/components/Navbar.tsx
-/* cv-website/components/Navbar.tsx */
+// cv-website/components/Navbar.tsx — the document's header band.
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Download, Menu, X } from "lucide-react";
+import { useParams } from "next/navigation";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
-import { useParams } from "next/navigation";
+import { cvHref } from "@/lib/cv";
 
 export default function Navbar() {
   const t = useTranslations("nav");
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const params = useParams();
   const locale = (params?.locale as string) || "ro";
 
+  const [onCover, setOnCover] = useState(true);
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setOnCover(window.scrollY < window.innerHeight - 96);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navItems = [
-    { href: "#about", label: t("about") },
-    { href: "#experience", label: t("experience") },
-    { href: "#education", label: t("education") },
-    { href: "#skills", label: t("skills") },
-    { href: "#projects", label: t("projects") },
-    { href: "#hobbies", label: t("hobbies") },
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const fields = [
+    { href: "#declaration", label: t("about") },
+    { href: "#service", label: t("experience") },
+    { href: "#credentials", label: t("education") },
+    { href: "#competences", label: t("skills") },
+    { href: "#annexes", label: t("projects") },
+    { href: "#endorsements", label: t("hobbies") },
     { href: "#contact", label: t("contact") },
   ];
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 100 }}
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          isScrolled 
-            ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg" 
-            : "bg-transparent"
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ease-settle ${
+          onCover
+            ? "border-b border-transparent bg-transparent"
+            : "border-b border-rule bg-stock/90 backdrop-blur-md"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <motion.a
-              href="#"
-              className="text-2xl font-bold"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+        <div className="mx-auto flex h-16 max-w-document items-center gap-4 px-5 sm:px-8">
+          <a
+            href="#cover"
+            className={`flex items-baseline gap-3 transition-colors duration-500 ${
+              onCover ? "text-cover-ink" : "text-ink"
+            }`}
+          >
+            <span className="engraved text-xl leading-none">VB</span>
+            <span
+              className={`serial hidden text-index sm:inline ${
+                onCover ? "text-cover-ink-2" : "text-ink-3"
+              }`}
             >
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                VB
-              </span>
-            </motion.a>
+              {t("reference")}
+            </span>
+          </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.href}
-                  href={item.href}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="relative text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium"
-                  whileHover={{ y: -2 }}
-                >
-                  {item.label}
-                  <motion.span
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600"
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.a>
-              ))}
-              
-              <motion.a
-                href={locale === "en" ? "/cv/CV_Valentin_Bejan_2026.pdf" : `/cv/cv-${locale}.pdf`}
-                download
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-shadow"
+          <nav className="ml-auto hidden items-center gap-x-5 lg:flex">
+            {fields.map((f) => (
+              <a
+                key={f.href}
+                href={f.href}
+                className={`field-label relative py-1 text-index transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-settle hover:after:scale-x-100 ${
+                  onCover
+                    ? "text-cover-ink-2 after:bg-cover-foil hover:text-cover-ink"
+                    : "text-ink-2 after:bg-stamp hover:text-ink"
+                }`}
               >
-                <Download size={16} />
-                {t("downloadCV")}
-              </motion.a>
-              
-              <LanguageToggle />
-              <ThemeToggle />
-            </div>
+                {f.label}
+              </a>
+            ))}
+          </nav>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center gap-2">
-              <LanguageToggle />
-              <ThemeToggle />
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              >
-                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
+          <div className="ml-auto flex items-center gap-2 lg:ml-4">
+            <LanguageToggle onCover={onCover} />
+            <ThemeToggle onCover={onCover} />
+
+            <a
+              href={cvHref(locale)}
+              download
+              className={`field-label hidden px-4 py-2 transition-all duration-300 ease-settle sm:inline-flex ${
+                onCover
+                  ? "border border-cover-foil/60 text-cover-foil hover:border-cover-foil hover:bg-cover-foil hover:text-cover"
+                  : "bg-ink text-stock hover:bg-stamp"
+              }`}
+            >
+              {t("downloadCV")}
+            </a>
+
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-label={t("openIndex")}
+              className={`p-2 lg:hidden ${onCover ? "text-cover-ink" : "text-ink"}`}
+            >
+              <Menu size={20} strokeWidth={1.5} />
+            </button>
           </div>
         </div>
-      </motion.nav>
+      </header>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-16 left-0 right-0 z-40 md:hidden"
-          >
-            <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-xl border-t border-gray-200 dark:border-gray-800">
-              <div className="px-4 py-4 space-y-2">
-                {navItems.map((item) => (
-                  <motion.a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    whileHover={{ x: 10 }}
-                    className="block px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 dark:hover:text-purple-400 transition-all"
-                  >
-                    {item.label}
-                  </motion.a>
-                ))}
-                
-                <motion.a
-                  href={locale === "en" ? "/cv/CV_Valentin_Bejan_2026.pdf" : `/cv/cv-${locale}.pdf`}
-                  download
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold shadow-md"
-                >
-                  <Download size={16} />
-                  {t("downloadCV")}
-                </motion.a>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* The index of fields, as its own page of the document */}
+      {open ? (
+        <div className="fixed inset-0 z-[60] overflow-y-auto bg-stock lg:hidden">
+          <div className="flex h-16 items-center justify-between px-5 sm:px-8">
+            <span className="serial text-index text-ink-3">
+              {t("reference")}
+            </span>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label={t("closeIndex")}
+              className="p-2 text-ink"
+            >
+              <X size={20} strokeWidth={1.5} />
+            </button>
+          </div>
+
+          <nav className="px-5 pb-12 sm:px-8">
+            {fields.map((f, i) => (
+              <a
+                key={f.href}
+                href={f.href}
+                onClick={() => setOpen(false)}
+                className="field-row flex items-baseline justify-between py-5 text-ink"
+              >
+                <span className="engraved text-2xl">{f.label}</span>
+                <span className="serial text-index text-ink-3">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </a>
+            ))}
+
+            <a
+              href={cvHref(locale)}
+              download
+              onClick={() => setOpen(false)}
+              className="field-label mt-8 flex items-center justify-center bg-ink px-4 py-4 text-stock"
+            >
+              {t("downloadCV")}
+            </a>
+          </nav>
+        </div>
+      ) : null}
     </>
   );
 }

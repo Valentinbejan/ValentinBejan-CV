@@ -1,0 +1,581 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-28T00:00:00.000Z",
+  "title": "Design System: Valentin Bejan — Self-Issued Credential",
+  "extensions": {
+    "colorMeta": {
+      "stock": {
+        "role": "neutral",
+        "displayName": "Security Stock",
+        "canonical": "rgb(233 238 243)",
+        "uv": "rgb(11 10 31)",
+        "tonalRamp": [
+          "#0a0e14",
+          "#151d29",
+          "#28374d",
+          "#3d5271",
+          "#5c7799",
+          "#8fa3bd",
+          "#b9c8d9",
+          "#e9eef3"
+        ]
+      },
+      "stock-2": {
+        "role": "neutral",
+        "displayName": "Security Stock, Tinted",
+        "canonical": "rgb(222 230 238)",
+        "uv": "rgb(20 18 46)",
+        "tonalRamp": [
+          "#090d12",
+          "#131c26",
+          "#243547",
+          "#385069",
+          "#546e8b",
+          "#8199b3",
+          "#aec1d3",
+          "#dee6ee"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Document Ink",
+        "canonical": "rgb(10 27 77)",
+        "uv": "rgb(232 228 255)",
+        "tonalRamp": [
+          "#04081f",
+          "#070f33",
+          "#0a1b4d",
+          "#0f2870",
+          "#1a3a99",
+          "#3d5ec2",
+          "#7b93de",
+          "#c3cff2"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink, Secondary",
+        "canonical": "rgb(53 71 126)",
+        "uv": "rgb(169 162 216)",
+        "tonalRamp": [
+          "#0b0f1c",
+          "#151c34",
+          "#23304f",
+          "#35477e",
+          "#4a60a3",
+          "#7186c2",
+          "#a2b0da",
+          "#d6def0"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink, Tertiary (AA-computed)",
+        "canonical": "rgb(84 98 138)",
+        "uv": "rgb(126 119 176)",
+        "tonalRamp": [
+          "#0f1219",
+          "#1c2130",
+          "#2e3648",
+          "#454f6b",
+          "#54628a",
+          "#7c88ab",
+          "#a8b1c8",
+          "#d8dde7"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline Rule",
+        "canonical": "rgb(176 190 214)",
+        "uv": "rgb(58 52 112)",
+        "tonalRamp": [
+          "#111620",
+          "#1e2637",
+          "#333f57",
+          "#4c5c7c",
+          "#6d7f9f",
+          "#93a3c0",
+          "#b0bed6",
+          "#dde4ee"
+        ]
+      },
+      "guilloche": {
+        "role": "secondary",
+        "displayName": "Engine-Turned Line",
+        "canonical": "rgb(88 112 172)",
+        "uv": "rgb(75 63 158)",
+        "tonalRamp": [
+          "#0d1122",
+          "#171d3a",
+          "#26305c",
+          "#38477f",
+          "#5870ac",
+          "#7d92c6",
+          "#a8b8dd",
+          "#d7deef"
+        ]
+      },
+      "foil": {
+        "role": "secondary",
+        "displayName": "Gold Foil",
+        "canonical": "rgb(166 122 34)",
+        "uv": "rgb(232 192 106)",
+        "tonalRamp": [
+          "#231903",
+          "#3d2c08",
+          "#5c440f",
+          "#7d5c17",
+          "#a67a22",
+          "#c99a3f",
+          "#e0b75c",
+          "#f4e0b0"
+        ]
+      },
+      "foil-text": {
+        "role": "secondary",
+        "displayName": "Foil, Legible",
+        "canonical": "rgb(122 88 20)",
+        "uv": "rgb(232 192 106)",
+        "tonalRamp": [
+          "#1a1203",
+          "#2e2006",
+          "#46310b",
+          "#5f4310",
+          "#7a5814",
+          "#a1762a",
+          "#c99f52",
+          "#ecd6a4"
+        ]
+      },
+      "stamp": {
+        "role": "tertiary",
+        "displayName": "Stamp Violet",
+        "canonical": "rgb(122 46 134)",
+        "uv": "rgb(192 96 224)",
+        "tonalRamp": [
+          "#1d0a20",
+          "#341239",
+          "#4c1a53",
+          "#65226f",
+          "#7a2e86",
+          "#9f4dad",
+          "#c07fcb",
+          "#e6c4ec"
+        ]
+      },
+      "verify": {
+        "role": "tertiary",
+        "displayName": "Verification Teal",
+        "canonical": "rgb(11 100 88)",
+        "uv": "rgb(53 224 176)",
+        "tonalRamp": [
+          "#02120f",
+          "#04241f",
+          "#06392f",
+          "#084e42",
+          "#0b6458",
+          "#118a78",
+          "#2bc0a5",
+          "#a9e8dc"
+        ]
+      },
+      "cover": {
+        "role": "primary",
+        "displayName": "Cobalt Cover",
+        "canonical": "rgb(7 18 51)",
+        "uv": "rgb(6 5 20)",
+        "tonalRamp": [
+          "#03070f",
+          "#050c1f",
+          "#071233",
+          "#0b1c4d",
+          "#123070",
+          "#2451ab",
+          "#5480d6",
+          "#b3c7ee"
+        ]
+      },
+      "cover-2": {
+        "role": "primary",
+        "displayName": "Cobalt, Lifted",
+        "canonical": "rgb(12 30 78)",
+        "uv": "rgb(12 10 38)",
+        "tonalRamp": [
+          "#040a17",
+          "#07122a",
+          "#0c1e4e",
+          "#122a6c",
+          "#1b3d94",
+          "#3160c0",
+          "#6b90dd",
+          "#c0d1f2"
+        ]
+      },
+      "cover-ink": {
+        "role": "neutral",
+        "displayName": "Cover Ink",
+        "canonical": "rgb(242 246 255)",
+        "uv": "rgb(236 232 255)",
+        "tonalRamp": [
+          "#111420",
+          "#1e2434",
+          "#31394f",
+          "#4a5470",
+          "#6a7595",
+          "#949ebc",
+          "#c0c7dc",
+          "#f2f6ff"
+        ]
+      },
+      "cover-ink-2": {
+        "role": "neutral",
+        "displayName": "Cover Ink, Secondary",
+        "canonical": "rgb(159 180 232)",
+        "uv": "rgb(169 162 216)",
+        "tonalRamp": [
+          "#0d1121",
+          "#161d38",
+          "#233058",
+          "#33457c",
+          "#4d64a5",
+          "#7189c8",
+          "#9fb4e8",
+          "#dbe4f7"
+        ]
+      },
+      "cover-foil": {
+        "role": "secondary",
+        "displayName": "Cover Foil",
+        "canonical": "rgb(224 183 92)",
+        "uv": "rgb(232 192 106)",
+        "tonalRamp": [
+          "#231a06",
+          "#3e2f0c",
+          "#5b4514",
+          "#7c5e1d",
+          "#a37c2b",
+          "#c69a44",
+          "#e0b75c",
+          "#f5e2b2"
+        ]
+      },
+      "cover-guilloche": {
+        "role": "secondary",
+        "displayName": "Cover Guilloche",
+        "canonical": "rgb(90 124 210)",
+        "uv": "rgb(110 88 220)",
+        "tonalRamp": [
+          "#0b1024",
+          "#141d40",
+          "#213063",
+          "#31488f",
+          "#455fb4",
+          "#5a7cd2",
+          "#8aa4e4",
+          "#ccd8f5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "bearer": {
+        "displayName": "Bearer",
+        "purpose": "The name on the cover, set in two blocks. Used exactly once in the document."
+      },
+      "denomination": {
+        "displayName": "Denomination",
+        "purpose": "The positioning line beneath the name. Deliberately outranks every interior heading."
+      },
+      "heading": {
+        "displayName": "Section Heading",
+        "purpose": "Interior section titles, always paired with a right-aligned serial reference and a lathe rule."
+      },
+      "entry": {
+        "displayName": "Entry",
+        "purpose": "Primary record values: position, institution, competence items."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Annex description at sm and up; the one prose step above record."
+      },
+      "annex": {
+        "displayName": "Annex Title",
+        "purpose": "The loudest interior entity, used only for a principal annex."
+      },
+      "entity": {
+        "displayName": "Entity",
+        "purpose": "Employer, qualification, interest: the engraved title of a record entry."
+      },
+      "entity-sm": {
+        "displayName": "Entity, Minor",
+        "purpose": "Competence category titles in the schedule's stub column."
+      },
+      "record": {
+        "displayName": "Record",
+        "purpose": "Descriptive prose inside a field. Held to a 68ch measure (58ch in narrow columns)."
+      },
+      "field": {
+        "displayName": "Field Label",
+        "purpose": "Every label naming a box on the form; also the only button typography. Uppercase, Archivo at wdth 92."
+      },
+      "serial": {
+        "displayName": "Serial",
+        "purpose": "Dates, periods, references, hosts, machine-readable strip. Always tabular figures."
+      },
+      "data": {
+        "displayName": "Data Value",
+        "purpose": "Periods, dates and cover data values. Tabular."
+      },
+      "proof": {
+        "displayName": "Proof",
+        "purpose": "Verification links and annex materials — anything a reader can go and check."
+      },
+      "ref": {
+        "displayName": "Reference",
+        "purpose": "Reference codes, hosts, and the machine-readable strip from sm up."
+      },
+      "index": {
+        "displayName": "Index",
+        "purpose": "Nav fields, index numerals, the stamp date line."
+      },
+      "mrz": {
+        "displayName": "Strip",
+        "purpose": "The machine-readable strip on narrow screens."
+      },
+      "microprint": {
+        "displayName": "Microprint",
+        "purpose": "Decorative security band at 4px (5px from 768px). Never carries information; not selectable."
+      }
+    },
+    "shadows": [
+      {
+        "name": "photo-mount",
+        "value": "0 1px 2px rgb(var(--ink) / 0.16), 0 12px 28px -10px rgb(var(--ink) / 0.4)",
+        "purpose": "The only container shadow in the system. For a photograph physically mounted on the page, always with a 1px foil ring."
+      },
+      {
+        "name": "relief",
+        "value": "text-shadow: 0 1px 0 rgb(var(--stock) / 0.8), 0 -1px 1px rgb(var(--ink) / 0.14)",
+        "purpose": "Intaglio relief on engraved headings over stock: ink sitting proud of the paper."
+      },
+      {
+        "name": "cover-relief",
+        "value": "text-shadow: 0 1px 1px rgb(0 0 0 / 0.55), 0 -1px 0 rgb(var(--cover-ink) / 0.14)",
+        "purpose": "The same relief effect for engraved type on the cobalt covers."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-settle",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing in the system. Exponential ease-out: the document settles, it never bounces."
+      },
+      {
+        "name": "lamp-sweep",
+        "value": "lamp-sweep 22s ease-in-out infinite",
+        "purpose": "Idle fallback for the cover's raking light, animating the @property-registered --lx/--ly until a pointer is seen."
+      },
+      {
+        "name": "foil-catch",
+        "value": "foil-catch 1.4s cubic-bezier(0.16,1,0.3,1) 0.3s both",
+        "purpose": "Specular sweep across foil text or the cover seal, once on entry."
+      },
+      {
+        "name": "stamp-press",
+        "value": "stamp-press 0.7s cubic-bezier(0.16,1,0.3,1) both",
+        "purpose": "The violet stamp pressing onto the declaration when it enters view: rotate -14deg to -7deg, scale 1.5 to 1."
+      },
+      {
+        "name": "rule-draw",
+        "value": "transform: scaleX(0) -> scaleX(1) over 1100ms ease-settle, origin left",
+        "purpose": "The lathe rule under a section heading drawing across as the section enters view."
+      },
+      {
+        "name": "reveal-failsafe",
+        "value": "4000ms",
+        "purpose": "useInView forces the revealed state after 4s so nothing can stay hidden if an IntersectionObserver misses."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media (prefers-reduced-motion: reduce) { animation-duration: 0.001ms; transition-duration: 0.001ms; scroll-behavior: auto }",
+        "purpose": "Honoured globally on every element and pseudo-element."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Certified Copy Action",
+      "kind": "button",
+      "refersTo": "button-certified-copy",
+      "description": "The cover's primary action: solid gold foil on cobalt, downloads the PDF.",
+      "html": "<a class=\"ds-btn-foil\" href=\"#\">COPIE CERTIFICATĂ</a>",
+      "css": ".ds-btn-foil { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: rgb(var(--cover-foil, 224 183 92)); color: rgb(var(--cover, 7 18 51)); font-family: var(--font-record), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; font-variation-settings: 'wdth' 92; padding: 0.875rem 1.5rem; border: none; border-radius: 0; text-decoration: none; transition: all 300ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-foil:hover { filter: brightness(1.1); } .ds-btn-foil:focus-visible { outline: 2px solid rgb(var(--cover-foil, 224 183 92)); outline-offset: 3px; }"
+    },
+    {
+      "name": "Verify Action",
+      "kind": "button",
+      "refersTo": "button-verify",
+      "description": "The cover's secondary action: hairline outline on cobalt, jumps to the annexes.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">VERIFICĂ</a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: transparent; color: rgb(var(--cover-ink, 242 246 255)); border: 1px solid rgb(var(--cover-ink-2, 159 180 232) / 0.45); border-radius: 0; font-family: var(--font-record), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; font-variation-settings: 'wdth' 92; padding: 0.875rem 1.5rem; text-decoration: none; transition: all 300ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-outline:hover { border-color: rgb(var(--cover-foil, 224 183 92)); color: rgb(var(--cover-foil, 224 183 92)); } .ds-btn-outline:focus-visible { outline: 2px solid rgb(var(--cover-foil, 224 183 92)); outline-offset: 3px; }"
+    },
+    {
+      "name": "Issue Action",
+      "kind": "button",
+      "refersTo": "button-issue",
+      "description": "The interior download action: the only solid fill on stock. Hovers to stamp violet.",
+      "html": "<a class=\"ds-btn-issue\" href=\"#\">DESCARCĂ CV</a>",
+      "css": ".ds-btn-issue { display: inline-flex; align-items: center; background: rgb(var(--ink, 10 27 77)); color: rgb(var(--stock, 233 238 243)); font-family: var(--font-record), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; font-variation-settings: 'wdth' 92; padding: 0.5rem 1rem; border: none; border-radius: 0; text-decoration: none; transition: all 300ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-issue:hover { background: rgb(var(--stamp, 122 46 134)); } .ds-btn-issue:focus-visible { outline: 2px solid rgb(var(--stamp, 122 46 134)); outline-offset: 3px; }"
+    },
+    {
+      "name": "Instrument Control",
+      "kind": "button",
+      "refersTo": "button-instrument",
+      "description": "The lighting-condition toggle: a hairline control with a pip showing which lamp is on. Same shell serves the language and copy controls.",
+      "html": "<button class=\"ds-instrument\" type=\"button\"><span class=\"ds-instrument-pip\" aria-hidden=\"true\"></span>LUMINĂ DE ZI</button>",
+      "css": ".ds-instrument { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: rgb(var(--ink-3, 84 98 138)); border: 1px solid rgb(var(--rule, 176 190 214)); border-radius: 0; font-family: var(--font-record), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; font-variation-settings: 'wdth' 92; padding: 0.5rem 0.75rem; cursor: pointer; transition: color 200ms, border-color 200ms; } .ds-instrument-pip { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: rgb(var(--foil, 166 122 34)); transition: background 300ms; } .ds-instrument:hover { color: rgb(var(--stamp, 122 46 134)); border-color: rgb(var(--stamp, 122 46 134)); } .ds-instrument:hover .ds-instrument-pip { background: rgb(var(--stamp, 122 46 134)); } .ds-instrument:focus-visible { outline: 2px solid rgb(var(--stamp, 122 46 134)); outline-offset: 3px; }"
+    },
+    {
+      "name": "Record Field",
+      "kind": "card",
+      "refersTo": "field-row",
+      "description": "The system's card replacement: a hairline-ruled row with a fixed 10.5rem stub column and a fluid record column. No background, no radius, no shadow.",
+      "html": "<article class=\"ds-field\"><div class=\"ds-field-stub\"><p class=\"ds-field-serial\">2024 — 2025</p><p class=\"ds-field-label\">GALAȚI, RO</p></div><div><h3 class=\"ds-field-title\">Numele Angajatorului</h3><p class=\"ds-field-entry\">Inginer software</p><p class=\"ds-field-record\">Descrierea rolului, ținută la o măsură de 68ch pentru ca rândul să rămână lizibil.</p><a class=\"ds-proof\" href=\"#\">exemplu.ro<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a></div></article>",
+      "css": ".ds-field { display: grid; gap: 0.75rem 2.5rem; grid-template-columns: 10.5rem minmax(0,1fr); border-top: 1px solid rgb(var(--rule, 176 190 214) / 0.75); padding: 1.75rem 0; border-radius: 0; } .ds-field-serial { font-family: var(--font-serial), ui-monospace, monospace; font-variant-numeric: tabular-nums lining-nums; letter-spacing: 0.06em; font-size: 0.8125rem; color: rgb(var(--ink-2, 53 71 126)); margin: 0; } .ds-field-label { font-family: var(--font-record), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; font-variation-settings: 'wdth' 92; color: rgb(var(--ink-3, 84 98 138)); margin: 0.5rem 0 0; } .ds-field-title { font-family: var(--font-display), Georgia, serif; font-weight: 500; letter-spacing: -0.018em; line-height: 0.94; font-size: 1.75rem; color: rgb(var(--ink, 10 27 77)); margin: 0; text-shadow: 0 1px 0 rgb(var(--stock, 233 238 243) / 0.8), 0 -1px 1px rgb(var(--ink, 10 27 77) / 0.14); } .ds-field-entry { font-family: var(--font-record), system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.45; color: rgb(var(--ink-2, 53 71 126)); margin: 0.25rem 0 0; } .ds-field-record { font-family: var(--font-record), system-ui, sans-serif; font-size: 0.9375rem; line-height: 1.55; max-width: 68ch; color: rgb(var(--ink-2, 53 71 126)); margin: 0.75rem 0 0; } .ds-proof { display: inline-flex; align-items: center; gap: 0.375rem; margin-top: 0.75rem; font-family: var(--font-serial), ui-monospace, monospace; letter-spacing: 0.06em; font-size: 0.75rem; color: rgb(var(--verify, 11 100 88)); text-decoration: none; border-bottom: 1px solid rgb(var(--verify, 11 100 88) / 0.4); padding-bottom: 0.125rem; transition: border-color 200ms; } .ds-proof:hover { border-bottom-color: rgb(var(--verify, 11 100 88)); } .ds-proof:focus-visible { outline: 2px solid rgb(var(--stamp, 122 46 134)); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ledger Row",
+      "kind": "nav",
+      "refersTo": "field-row",
+      "description": "The listed tier: a three-column ledger where every entry starts at the same x. Name, description, host, all on one baseline.",
+      "html": "<a class=\"ds-ledger\" href=\"#\"><span class=\"ds-ledger-name\">Numele Proiectului</span><span class=\"ds-ledger-desc\">O linie despre ce face.</span><span class=\"ds-ledger-host\">github.com<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></span></a>",
+      "css": ".ds-ledger { display: grid; grid-template-columns: minmax(0,15rem) minmax(0,1fr) 10rem; align-items: baseline; gap: 0.25rem 2rem; padding: 1rem 0; border-top: 1px solid rgb(var(--rule, 176 190 214) / 0.75); text-decoration: none; transition: color 200ms; } .ds-ledger-name { font-family: var(--font-record), system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.45; color: rgb(var(--ink, 10 27 77)); } .ds-ledger-desc { font-family: var(--font-record), system-ui, sans-serif; font-size: 0.9375rem; line-height: 1.55; color: rgb(var(--ink-3, 84 98 138)); } .ds-ledger-host { display: inline-flex; align-items: center; gap: 0.25rem; justify-self: end; font-family: var(--font-serial), ui-monospace, monospace; letter-spacing: 0.06em; font-size: 0.6875rem; color: rgb(var(--ink-3, 84 98 138)); } .ds-ledger:hover .ds-ledger-name, .ds-ledger:hover .ds-ledger-host { color: rgb(var(--stamp, 122 46 134)); } .ds-ledger:focus-visible { outline: 2px solid rgb(var(--stamp, 122 46 134)); outline-offset: 3px; }"
+    },
+    {
+      "name": "Section Header",
+      "kind": "custom",
+      "refersTo": "section-shell",
+      "description": "Every interior section opens the same way: engraved title, right-aligned serial reference on the same baseline, lathe rule beneath that draws in from the left, optional note at 68ch.",
+      "html": "<header class=\"ds-sechead\"><div class=\"ds-sechead-row\"><h2 class=\"ds-sechead-title\">Fișa de serviciu</h2><span class=\"ds-sechead-ref\">REF. 03 · 4 ÎNREGISTRĂRI</span></div><div class=\"ds-sechead-rule\"></div><p class=\"ds-sechead-note\">Nota secțiunii, ținută la măsura de 68ch.</p></header>",
+      "css": ".ds-sechead { margin-bottom: 3rem; } .ds-sechead-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 1.5rem; } .ds-sechead-title { font-family: var(--font-display), Georgia, serif; font-weight: 500; letter-spacing: -0.02em; line-height: 1; font-size: clamp(1.9rem, 3.6vw, 2.9rem); color: rgb(var(--ink, 10 27 77)); margin: 0; text-shadow: 0 1px 0 rgb(var(--stock, 233 238 243) / 0.8), 0 -1px 1px rgb(var(--ink, 10 27 77) / 0.14); } .ds-sechead-ref { font-family: var(--font-serial), ui-monospace, monospace; font-variant-numeric: tabular-nums; letter-spacing: 0.06em; font-size: 0.6875rem; color: rgb(var(--ink-3, 84 98 138)); } .ds-sechead-rule { height: 1.5rem; margin-top: 1rem; background: rgb(var(--guilloche, 88 112 172)); -webkit-mask-image: url(/img/lathe-rule.svg); mask-image: url(/img/lathe-rule.svg); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; transform-origin: left; animation: ds-rule-draw 1100ms cubic-bezier(0.16,1,0.3,1) both; } @keyframes ds-rule-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } } .ds-sechead-note { font-family: var(--font-record), system-ui, sans-serif; font-size: 0.9375rem; line-height: 1.55; max-width: 68ch; color: rgb(var(--ink-2, 53 71 126)); margin: 1rem 0 0; }"
+    },
+    {
+      "name": "Stamp Mark",
+      "kind": "custom",
+      "refersTo": "stamp-mark",
+      "description": "Violet office ink pressed onto the declaration once, when it enters view. Multiply blend in daylight, screen under UV.",
+      "html": "<div class=\"ds-stamp\"><span class=\"ds-stamp-line1\">EMIS DE PURTĂTOR</span><span class=\"ds-stamp-line2\">GALAȚI · 2026</span></div>",
+      "css": ".ds-stamp { display: inline-block; text-align: center; padding: 0.625rem 1rem; border: 2.5px solid rgb(var(--stamp, 122 46 134) / 0.75); color: rgb(var(--stamp, 122 46 134) / 0.9); border-radius: 0; mix-blend-mode: multiply; user-select: none; animation: ds-stamp-press 0.7s cubic-bezier(0.16,1,0.3,1) both; } @keyframes ds-stamp-press { 0% { opacity: 0; transform: rotate(-14deg) scale(1.5); } 55% { opacity: 1; transform: rotate(-7deg) scale(0.97); } 100% { opacity: 1; transform: rotate(-7deg) scale(1); } } .ds-stamp-line1 { display: block; font-family: var(--font-record), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; font-variation-settings: 'wdth' 92; } .ds-stamp-line2 { display: block; margin-top: 0.25rem; font-family: var(--font-serial), ui-monospace, monospace; font-size: 0.625rem; letter-spacing: 0.2em; }"
+    },
+    {
+      "name": "Self-Issued Seal",
+      "kind": "custom",
+      "refersTo": "button-certified-copy",
+      "description": "The issuer's own mark: three concentric rings, a circular legend, and a Bodoni monogram. Appears on the cover (xl and up) and on the countersignature block.",
+      "html": "<svg class=\"ds-seal\" viewBox=\"0 0 200 200\" role=\"img\" aria-label=\"Valentin Bejan — sigiliu propriu\"><defs><path id=\"ds-seal-ring\" d=\"M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0\" fill=\"none\"/></defs><circle cx=\"100\" cy=\"100\" r=\"92\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.1\" opacity=\"0.55\"/><circle cx=\"100\" cy=\"100\" r=\"86\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/><circle cx=\"100\" cy=\"100\" r=\"60\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"0.8\" opacity=\"0.7\" stroke-dasharray=\"1.5 3.5\"/><text fill=\"currentColor\" font-size=\"10.5\" letter-spacing=\"2.9\" font-weight=\"600\"><textPath href=\"#ds-seal-ring\" startOffset=\"0\">VALENTIN BEJAN · GALAȚI · ROMÂNIA · EMITENT PROPRIU · </textPath></text><text x=\"100\" y=\"118\" text-anchor=\"middle\" fill=\"currentColor\" font-size=\"58\" font-family=\"var(--font-display), Georgia, serif\" font-weight=\"600\" letter-spacing=\"-1\">VB</text></svg>",
+      "css": ".ds-seal { width: 8rem; height: 8rem; color: rgb(var(--cover-foil, 224 183 92)); display: block; }"
+    },
+    {
+      "name": "Microprint Band",
+      "kind": "custom",
+      "refersTo": "section-shell",
+      "description": "The security band under the cover and above the foot: 4px repeated legend on tinted stock, unselectable, carrying no information.",
+      "html": "<div class=\"ds-microband\"><p class=\"ds-microprint\">VALENTIN BEJAN · GALAȚI · ROMÂNIA · VALENTIN BEJAN · GALAȚI · ROMÂNIA · VALENTIN BEJAN · GALAȚI · ROMÂNIA · VALENTIN BEJAN · GALAȚI · ROMÂNIA · VALENTIN BEJAN · GALAȚI · ROMÂNIA · VALENTIN BEJAN · GALAȚI · ROMÂNIA · </p></div>",
+      "css": ".ds-microband { background-color: rgb(var(--stock, 233 238 243)); border-bottom: 1px solid rgb(var(--rule, 176 190 214)); background-image: repeating-linear-gradient(58deg, rgb(var(--guilloche, 88 112 172) / 0.07) 0 1px, transparent 1px 6px), repeating-linear-gradient(-58deg, rgb(var(--guilloche, 88 112 172) / 0.04) 0 1px, transparent 1px 9px); } .ds-microprint { font-family: var(--font-serial), ui-monospace, monospace; font-size: 4px; line-height: 1; letter-spacing: 0.24em; text-transform: uppercase; white-space: nowrap; overflow: hidden; user-select: none; color: rgb(var(--ink-3, 84 98 138) / 0.55); padding: 0.5rem 1.25rem; margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Self-Issued Credential",
+    "overview": "This is not a portfolio site wearing a document theme. It is a security document that happens to be rendered in a browser: a drenched cobalt cover, a machine-readable strip along its foot, tinted anti-photocopy stock inside, engine-turned guilloche cut by an actual geometric lathe algorithm, gold foil that catches light once, and violet office ink that presses onto the page when the declaration is read. Every claim on the interior pages carries a reference someone else can check — a repo host, a live URL, an institution — printed in verification teal so the eye finds the evidence before the prose.\n\nThe system has exactly two lighting conditions, not two themes. Daylight (:root) is the document read on a desk: cool pale stock, deep navy ink, muted gold. UV (.uv) is the same document under an inspection lamp: near-black violet-blue stock, fluorescing lilac ink, hot teal and hot violet where the security features are. next-themes maps light→daylight and dark→UV; the mental model is the lamp, not the palette. Contrast clears AA in both conditions by computation, not by eye — ink-3 and verify were picked against both stock and stock-2.\n\nDensity is that of a printed form: hairline rules instead of containers, a fixed left stub column that every ledger row aligns to, tabular numerals so periods and references stack in a column, and body copy held to a 68ch measure. Motion is nearly absent by design. There is one authored moment — the raking light crossing the cover, driven by --lx/--ly from the pointer — and two quiet finishes: lathe rules drawing across a section header and the violet stamp pressing once. Nothing animates in or out that isn't already readable when it arrives.",
+    "keyCharacteristics": [
+      "Ruled fields and ledgers; no cards, no boxes, no elevated containers",
+      "Two lighting conditions (daylight / UV), one document",
+      "Every verifiable claim rendered in verification teal with its host visible",
+      "Zero corner radius everywhere except the focus ring (1px) and the lamp pip",
+      "Flat by construction: two shadows exist in the whole system, both for mounted physical objects",
+      "Guilloche is generated geometry, not decoration stock",
+      "Cobalt bookends: the cover opens the record, the countersignature closes it"
+    ],
+    "rules": [
+      {
+        "name": "The One Job Rule",
+        "body": "Gold means issuance, violet means the bearer acted or a control is focused, teal means this claim is checkable. No ink is used for emphasis, decoration, or mood. If a colour appears where its job isn't happening, it's wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Lamps Rule",
+        "body": "Every colour decision must be made in both :root and .uv. A token that exists in only one lighting condition is a bug, not a variant. Contrast is verified against both stock and stock-2 before a value ships.",
+        "section": "colors"
+      },
+      {
+        "name": "The Cobalt Bookends Rule",
+        "body": "Cobalt is a cover colour. It appears exactly twice — first viewport and countersignature — and the foot carries cover-2. Any third cobalt band would turn a document into a striped page.",
+        "section": "colors"
+      },
+      {
+        "name": "The Engraved Register Rule",
+        "body": "Bodoni is used only for names, denominations, headings, entity titles, and the signature. It never sets a paragraph and never sets a label. .engraved carries its own weight (500), tracking (-0.018em) and leading (0.94); do not restate them.",
+        "section": "typography"
+      },
+      {
+        "name": "The Number Is a Measurement Rule",
+        "body": "Anything a reader could verify, count, or dial — dates, periods, references, hosts, phone, annex numbers — is set in Courier Prime with tabular figures. Mono is measurement, never costume; it is not used for prose or for atmosphere.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Kicker Rule",
+        "body": "No eyebrow, kicker, or all-caps micro-label sits above a heading. The reference code sits beside the heading on the same baseline, right-aligned. That is the only heading companion this system has.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Paper Rule",
+        "body": "A surface never lifts. If a region needs to separate from its neighbour, it changes stock (stock ↔ stock-2), gains a hairline rule, or gains a perforation — never a shadow and never a border radius.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Screen-Not-Fill Rule",
+        "body": "Every interior ground carries .security-tint: two crossed repeating line screens at ±58° in guilloche at 7% and 4%. A section painted in flat stock without the tint is flat colour pretending to be paper.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do define every new colour in both :root and .uv, and check it against stock and stock-2 before shipping it.",
+      "Do separate records with hairline rules and column alignment (.field-row, the 10.5rem stub) instead of containers.",
+      "Do set every date, period, reference, host and count in Courier Prime with tabular figures.",
+      "Do put a visible host name in verification teal under any claim a reader could check.",
+      "Do apply .security-tint to every interior ground, and alternate stock / stock-2 between adjacent sections.",
+      "Do size guilloche rosettes to roughly the same render scale across instances, so the shared mask's hairlines carry the same weight everywhere.",
+      "Do render content readable first and let useInView add finish only; keep the 4-second failsafe on any new reveal.",
+      "Do use ease-settle (cubic-bezier(0.16, 1, 0.3, 1)) for every transition — the document settles, it never bounces."
+    ],
+    "donts": [
+      "Don't build cards: no rounded container with a shadow, a background and an icon at the top. Corner radius stays at 0 outside the focus ring and the lamp pip.",
+      "Don't build an icon + heading + paragraph grid for competences, services, or anything else. Those are ledger rows.",
+      "Don't put a kicker, eyebrow, or all-caps micro-label above a heading; the reference code goes beside it on the same baseline.",
+      "Don't apply a decorative gradient to type. The one legitimate gradient-on-text is .foil-text, the gold specular sweep, and it is only for foil.",
+      "Don't borrow the signal inks: gold is not an accent, violet is not an error colour, teal is not a \"success\" state.",
+      "Don't add a third cobalt band, or use cobalt as an interior section ground.",
+      "Don't add a shadow to make something feel raised; change the stock, add a rule, or add a perforation.",
+      "Don't add a second authored motion moment. The cover's raking light is the one; interior motion is the drawing rule and the single stamp press, both honouring prefers-reduced-motion.",
+      "Don't introduce a motion library. Everything here is IntersectionObserver plus CSS, and it should stay that way."
+    ]
+  }
+}

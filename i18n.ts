@@ -1,14 +1,20 @@
 import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
-import { translations } from './lib/translations'; // Add './lib/'
+import { translations } from './lib/translations';
 
 const locales = ['ro', 'en'] as const;
+type Locale = (typeof locales)[number];
 
-export default getRequestConfig(async ({ locale }) => {
-  if (!locales.includes(locale as any)) notFound();
+export default getRequestConfig(async ({ requestLocale }) => {
+  const requested = await requestLocale;
+  const locale = locales.includes(requested as Locale)
+    ? (requested as Locale)
+    : undefined;
+
+  if (!locale) notFound();
 
   return {
-    // Add 'as any' here to bypass the strict type check
-    messages: translations[locale as keyof typeof translations] as any,
+    locale,
+    messages: translations[locale] as any,
   };
 });
