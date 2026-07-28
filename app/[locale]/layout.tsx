@@ -53,7 +53,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const m = META[locale as keyof typeof META] ?? META.ro;
   return {
-    metadataBase: new URL("https://valentinbejan.vercel.app"),
+    metadataBase: new URL("https://valentin-bejan-cv.vercel.app"),
     title: m.title,
     description: m.description,
     authors: [{ name: "Valentin Bejan" }],
