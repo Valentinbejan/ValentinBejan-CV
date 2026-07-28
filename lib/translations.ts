@@ -26,8 +26,6 @@ export const translations = {
       givenName: 'Valentin',
       familyName: 'Bejan',
       denomination: 'Absolvent de Calculatoare & pasionat de inteligență artificială',
-      standfirst:
-        'Fiecare rând din actul acesta trimite la ceva ce poți verifica singur: un depozit public de cod, o aplicație live, o diplomă.',
       issuedLabel: 'Eliberat',
       issuedValue: 'IUL. 2026',
       placeLabel: 'Locul',
@@ -343,8 +341,6 @@ export const translations = {
     },
     contact: {
       title: 'Contrasemnătură',
-      standfirst:
-        'Actul e complet abia când răspunde cineva. Telefonul și adresa de e-mail se copiază dintr-un clic.',
       phone: 'Telefon',
       email: 'Email',
       linkedin: 'LinkedIn',
@@ -387,8 +383,6 @@ export const translations = {
       givenName: 'Valentin',
       familyName: 'Bejan',
       denomination: 'Computer Engineering graduate & Artificial Intelligence Enthusiast',
-      standfirst:
-        'Every line in this record points at something you can check yourself: a public repository, a live app, a degree.',
       issuedLabel: 'Issued',
       issuedValue: 'JUL 2026',
       placeLabel: 'Place',
@@ -701,8 +695,6 @@ export const translations = {
     },
     contact: {
       title: 'Countersignature',
-      standfirst:
-        'The record is only complete when someone answers. The phone number and the email address copy in one click.',
       phone: 'Phone',
       email: 'Email',
       linkedin: 'LinkedIn',

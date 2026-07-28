@@ -94,9 +94,6 @@ export default function Contact() {
               style={{ transform: seen ? "scaleX(1)" : "scaleX(0)" }}
             />
           </div>
-          <p className="measure mt-5 text-entry text-cover-ink-2">
-            {t("standfirst")}
-          </p>
         </header>
 
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20">

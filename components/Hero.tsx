@@ -123,9 +123,6 @@ export default function Hero() {
         <p className="engraved mt-6 max-w-2xl text-denomination text-cover-ink">
           {t("denomination")}
         </p>
-        <p className="measure mt-4 text-record text-cover-ink-2 sm:text-entry">
-          {t("standfirst")}
-        </p>
       </div>
 
       {/* ── The data panel ───────────────────────────────────────────── */}
