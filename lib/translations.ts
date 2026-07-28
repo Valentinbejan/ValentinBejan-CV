@@ -152,7 +152,6 @@ export const translations = {
     projects: {
       title: 'Anexe',
       reference: '{n, plural, one {# ANEXĂ} few {# ANEXE} other {# DE ANEXE}}',
-      note: 'Primele patru sunt lucrările care contează acum. Fiecare duce direct la codul sursă sau la aplicația care rulează.',
       annexRef: 'ANEXA {n}',
       proofSource: 'Cod sursă public',
       proofLive: 'Aplicație live',
@@ -507,7 +506,6 @@ export const translations = {
     projects: {
       title: 'Annexes',
       reference: '{n, plural, one {# ANNEX} other {# ANNEXES}}',
-      note: 'The first four are the work that matters now. Each one goes straight to its source code or to the app running in production.',
       annexRef: 'ANNEX {n}',
       proofSource: 'Public source',
       proofLive: 'Live app',

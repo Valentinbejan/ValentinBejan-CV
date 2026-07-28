@@ -38,7 +38,6 @@ export default function Projects() {
       id="annexes"
       title={t("title")}
       reference={t("reference", { n: projects.length })}
-      note={t("note")}
     >
       <div>
         {principal.map((p, i) => (
